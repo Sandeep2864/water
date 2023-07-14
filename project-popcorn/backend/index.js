@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -33,6 +35,7 @@ const bookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model('bookings', bookingSchema);
 
+const baseUrl = process.env.BASE_URL; // Retrieve the BASE_URL from the environment variable
 // API endpoint for user login
 app.post('/login', async (req, res) => {
   try {
